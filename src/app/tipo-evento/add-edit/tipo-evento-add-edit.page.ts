@@ -47,7 +47,7 @@ export class	TipoEventoAddEditPage	implements	OnInit	{
 						endereco: [this.tiposEvento.endereco, Validators.required],
 						bairro: [this.tiposEvento.bairro, Validators.required],
 						cidade: [this.tiposEvento.cidade, Validators.required],
-						convidados:[this.tiposEvento.convidados, Validators.required],
+						
 						
 						
 					});

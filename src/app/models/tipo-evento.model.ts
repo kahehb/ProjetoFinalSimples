@@ -7,6 +7,7 @@ export interface	TipoEvento	{
     endereco: string;
     bairro:	string;
     cidade:	string;
-    convidados: TipoCliente[];
+    convidados: string[];
+    
     
 }

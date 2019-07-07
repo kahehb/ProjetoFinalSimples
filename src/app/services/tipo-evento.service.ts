@@ -1,5 +1,6 @@
-import	{	Injectable	}	from '@angular/core';
+import { Injectable, NgModule } from '@angular/core';
 import { TipoEvento } from '../models/tipo-evento.model';
+
 @Injectable({
 		providedIn:	'root'
 })
@@ -13,61 +14,24 @@ export	class TipoEventosService	{
             cidade: "medianeira",
             bairro: "centro",
             endereco: "avenida brasil",
-            convidados:[{
-                id: 1,
-                    nome: "kahe"
-                },
-                {
-                id: 2,
-                    nome: "henrique"
-                },
-                {
-                id: 3,
-                    nome: "binda"
-                }
-            ]
+            convidados:["kahe","henrique","binda"]
         },
+        
         {
         id: 2,
             nome: " aniversairo Fernadno",
             cidade: "Sao miguel",
             bairro: "centro",
             endereco: "avenida torres",
-            convidados: [
-                {
-                id: 1,
-                    nome: "fernando"
-                },
-                {
-                id: 2,
-                    nome: "carol"
-                },
-                {
-                id: 3,
-                    nome: "luiz"
-                },
-            ]
-        },
+            convidados:["Luiz","henrique","Viola"]
+        },       
         {
         id: 3,
             nome: " balada",
             cidade: "foz",
             bairro: "centro",
             endereco: "avenida parana",
-            convidados: [
-                {
-                id: 1,
-                    nome: "ana"
-                },
-                {
-                id: 2,
-                    nome: "barbara"
-                },
-                {
-                id: 3,
-                    nome: "fernanda"
-                },
-            ]
+            convidados:["Afons","Cardoso","Padilha"]
         }
     ];
 ; 
@@ -90,14 +54,24 @@ export	class TipoEventosService	{
         if(tipoEvento.id <0){
             tipoEvento.id = this.tiposEventos[this.tiposEventos.length -1].id+1;
             this.tiposEventos.push(tipoEvento);
+            
         }else{
             this.tiposEventos[this.getIndexOfElement(tipoEvento.id)] = tipoEvento;
         }        
     }
+
+         
+    updateCliente(convidado: string ,tipoEvento: TipoEvento){
+        this.tiposEventos[this.getIndexOfElement(tipoEvento.id)].convidados.push(convidado);
+    
+        //console.log(this.tiposEventos[this.getIndexOfElement(tipoEvento.id)].convidados);
+    }
+    
     
     remove(TipoEvento: TipoEvento) {
         this.tiposEventos.splice(this.getIndexOfElement(TipoEvento.id), 1);
       }
+
 
     getAll(){
         return this.tiposEventos;

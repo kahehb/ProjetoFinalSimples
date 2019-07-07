@@ -6,6 +6,7 @@ import { TipoEvento } from '../../../../../vai que da bosta ne/ProjetoFinalSimpl
 import { ToastService } from 'src/app/services/toast.service';
 import { TipoCliente } from '../../models/tipo-cliente.models';
 
+
 @Component({				
         templateUrl:	'./tipo-meusEvento-add-edit.page.html'
 })
@@ -13,14 +14,14 @@ import { TipoCliente } from '../../models/tipo-cliente.models';
 
 export class	TipomeusEventoAddEditPage	implements	OnInit	{
     
-    public meuEvento;
+    public meuEvento: TipoEvento;
     public modoDeEdicao = false;
-    public meuEventosForm:	FormGroup;
-
+    public	tiposEventosForm:	FormGroup;
+    
     
 	constructor(
                     private	route:	ActivatedRoute,
-					private	meuEventosService:	TipoEventosService,
+                    private	meuEventosService:	TipoEventosService,
 					private	formBuilder: FormBuilder,
 					private	toastService:	ToastService,
 					private router: Router
@@ -31,9 +32,13 @@ export class	TipomeusEventoAddEditPage	implements	OnInit	{
 	ngOnInit():	void	{
                     const id: number =	Number(this.route.snapshot.paramMap.get('id'));
                     this.meuEvento = this.meuEventosService.getById(id);
-                   
-                  
+                    
+
+                    //this.tiposEventosForm	=	this.formBuilder.group({
+					//	convidado:["", Validators.required],
+					//});
 				}
+                  
 
     iniciarEdicao(){
         this.modoDeEdicao = true;
@@ -42,14 +47,13 @@ export class	TipomeusEventoAddEditPage	implements	OnInit	{
         this.modoDeEdicao = false;
     }
 
-    submit(inputnome){
-        let cliente: TipoCliente;
-        cliente.nome = inputnome;
-        this.meuEvento.convidados.push(cliente);
-        console.log(cliente);
-		this.modoDeEdicao = false;
+    submit(inputNome){
+        this.meuEventosService.updateCliente(inputNome.value,this.meuEvento);
+        this.modoDeEdicao = false;
+        this.toastService.presentToast('Gravação bem sucedida',	3000, 'top');
+		
 	}
-
+    
 
 }
 
