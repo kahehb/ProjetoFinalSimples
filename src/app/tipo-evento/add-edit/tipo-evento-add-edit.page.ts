@@ -2,9 +2,9 @@ import	{	Component,	OnInit	}	from	'@angular/core';
 import	{	TipoEventosService	}	from	'../../services/tipo-evento.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { TipoEvento } from '../../../../../vai que da bosta ne/ProjetoFinalSimples/src/app/models/tipo-evento.model';
+import { TipoEvento } from '../../models/tipo-evento.model';
 import { ToastService } from 'src/app/services/toast.service';
-
+import { TipoEvento } from '../../models/tipo-evento.model';
 @Component({				
         templateUrl:	'./tipo-evento-add-edit.page.html'
 })
