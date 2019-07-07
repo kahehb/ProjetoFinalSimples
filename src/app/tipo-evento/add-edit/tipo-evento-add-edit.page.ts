@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { TipoEvento } from '../../models/tipo-evento.model';
 import { ToastService } from 'src/app/services/toast.service';
-import { TipoEvento } from '../../models/tipo-evento.model';
+
 @Component({				
         templateUrl:	'./tipo-evento-add-edit.page.html'
 })
